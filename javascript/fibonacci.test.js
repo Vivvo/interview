@@ -30,7 +30,7 @@ test('fib 6', () => {
   expect(fib.calc(6)).toBe(8)
 })
 
-test.skip('fib 90', () => {
+test('fib 90', () => {
   let fib = fibonacci()
   expect(fib.calc(90)).toBe(2880067194370816120)
 })

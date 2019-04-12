@@ -1,7 +1,5 @@
 module.exports = () => {
   return {
-    sum: (nums) => {
-      return -1
-    }
+    sum: (nums) => nums.reduce((curr, acc) => acc + curr, 0)
   }
 }

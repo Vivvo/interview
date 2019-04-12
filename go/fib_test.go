@@ -21,7 +21,7 @@ func TestSuite(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(fmt.Sprintf("Fib %d", tt.num), func(t *testing.T) {
-			fib := Fib{}
+			fib := NewFib()
 			res := fib.calc(tt.num)
 			if res != tt.result {
 				t.Fatalf("Expected: %d, Actual: %d", tt.result, res)

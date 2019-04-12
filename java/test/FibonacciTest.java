@@ -1,5 +1,4 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -9,7 +8,9 @@ public class FibonacciTest {
   private Fibonacci fibonacci;
 
   @Before
-  public void setup() {}
+  public void setup() {
+    fibonacci = new Fibonacci();
+  }
 
   @Test
   public void fib1() {
@@ -42,7 +43,6 @@ public class FibonacciTest {
   }
 
   @Test
-  @Ignore
   public void fib90() {
     assertEquals(2880067194370816120L, fibonacci.calc(90));
   }

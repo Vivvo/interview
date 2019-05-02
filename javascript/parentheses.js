@@ -1,25 +1,35 @@
 const balance = (s) => {
   let open = []
   let output = ''
-  let streak = 0
-  for (i of s) {
-    if (i === '(') {
-      open.push('(')
-      streak = 0
-    } else if (i === ')') {
+  for (let i=0;i<s.length;i++) {
+    let l = s[i]
+    if (l === '(') {
+      if (s.substr(i, s.length).indexOf(')') > 0) {
+        open.push('(')
+        output += '('
+      }
+    } else if (l === ')') {
       if (open.length > 0) {
         open.pop()
-        if (streak > 0) output = '(' + output + ')' // TODO: streaks larger than 1 e.g. ((())) = 2 streak
-        else output += '()'
-        streak++
+        output += ')'
       }
+      
     } else {
-      output += s
-      streak = 0
+      output += l
     }
   }
 
+  // clear extraneous left parens
+  while (countOcc(output, '(') > countOcc(output, ')')) {
+    const findLeft = output.indexOf('((')
+    output = output.substr(0, findLeft) + output.substr(findLeft + 1, output.length)
+  }
+
   return output
+}
+
+const countOcc = (str, s) => {
+  return str.split(s).length - 1
 }
 
 module.exports = {
